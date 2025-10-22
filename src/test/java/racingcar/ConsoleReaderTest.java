@@ -15,8 +15,7 @@ class ConsoleReaderTest extends NsTest {
     void 사용자_입력_테스트() {
         assertSimpleTest(() -> {
             run("pobi,wony,domi");
-            ConsoleReader reader = new ConsoleReader();
-            String result = reader.readCarNames();
+            String result = ConsoleReader.readCarNames();
             assertThat(result).isEqualTo("pobi,wony,domi");
         });
     }
