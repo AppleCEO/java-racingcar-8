@@ -17,6 +17,7 @@ public class ConsoleReader {
     }
 
     private static void readMoveCount() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
         moveCount = Console.readLine();
     }
 }
