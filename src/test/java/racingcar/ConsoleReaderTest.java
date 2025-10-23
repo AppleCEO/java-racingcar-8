@@ -29,6 +29,15 @@ class ConsoleReaderTest extends NsTest {
         });
     }
 
+    @Test
+    void 이동_횟수_사용자_입력_테스트() {
+        assertSimpleTest(() -> {
+            run("pobi,wony,domi", "1");
+            String result = ConsoleReader.readMoveCount();
+            assertThat(result).isEqualTo("1");
+        });
+    }
+
     @Override
     protected void runMain() {
         
