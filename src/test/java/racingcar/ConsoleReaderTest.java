@@ -20,6 +20,14 @@ class ConsoleReaderTest extends NsTest {
         });
     }
 
+    @Test
+    void 사용자_입력_안내_메시지_테스트() {
+        assertSimpleTest(() -> {
+            assertThat(output()).contains("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+            run("pobi,woni", "1");
+        });
+    }
+
     @Override
     protected void runMain() {
         
