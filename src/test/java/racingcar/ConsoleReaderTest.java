@@ -22,7 +22,7 @@ class ConsoleReaderTest extends NsTest {
     }
 
     @Test
-    void 차_이름_사용자_입력_안내_메시지_테스트() {
+    void 사용자_입력_안내_메시지_테스트() {
         assertSimpleTest(() -> {
             run("pobi,woni", "1");
             ConsoleReader.readInput();
