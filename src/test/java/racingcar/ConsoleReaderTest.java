@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ConsoleReaderTest extends NsTest {
 
     @Test
-    void 사용자_입력_테스트() {
+    void 차_이름_사용자_입력_테스트() {
         assertSimpleTest(() -> {
             run("pobi,wony,domi");
             String result = ConsoleReader.readCarNames();
@@ -21,7 +21,7 @@ class ConsoleReaderTest extends NsTest {
     }
 
     @Test
-    void 사용자_입력_안내_메시지_테스트() {
+    void 차_이름_사용자_입력_안내_메시지_테스트() {
         assertSimpleTest(() -> {
             run("pobi,woni", "1");
             String result = ConsoleReader.readCarNames();
