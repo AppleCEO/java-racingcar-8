@@ -7,6 +7,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberI
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final int MOVING_FORWARD = 4;
@@ -29,6 +30,14 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("pobi,javaji", "1"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    void 이동_횟수에_숫자_아닌_입력_예외_테스트() {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+            runException("pobi,java", "a");
+        });
+        assertThat(e.getMessage()).isEqualTo(Message.ERROR_INVALID_ROUND_NUMBER);
     }
 
     @Override
