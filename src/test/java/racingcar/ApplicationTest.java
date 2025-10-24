@@ -37,7 +37,7 @@ class ApplicationTest extends NsTest {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             runException("pobi,java", "a");
         });
-        assertThat(e.getMessage()).isEqualTo(Message.ERROR_INVALID_ROUND_NUMBER);
+        assertThat(e.getMessage()).isEqualTo(Message.ERROR_INVALID_ROUND_NUMBER.get());
     }
 
     @Override
