@@ -11,12 +11,13 @@ public class ConsoleReader {
     private static final String SPLIT_CHARACTOR = ",";
 
     public static void readInput() {
+        ConsoleOutput.printCarNamesInputGuide();
         readCarNames();
+        ConsoleOutput.printMoveCountInputGuide();
         readMoveCount();
     }
 
     private static void readCarNames() {
-        ConsoleOutput.printCarNamesInputGuide();
         String input = Console.readLine();
         String[] inputNames = input.split(SPLIT_CHARACTOR);
         validateCarNames(inputNames);
@@ -24,7 +25,6 @@ public class ConsoleReader {
     }
 
     private static void readMoveCount() {
-        ConsoleOutput.printMoveCountInputGuide();
         try {
             moveCount = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
