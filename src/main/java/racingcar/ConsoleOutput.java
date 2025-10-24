@@ -1,11 +1,31 @@
 package racingcar;
 
+import java.util.List;
+
 public class ConsoleOutput {
     public static void printCarNamesInputGuide() {
-        System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        System.out.println(Message.PROMPT_CAR_NAMES);
     }
 
     public static void printMoveCountInputGuide() {
-        System.out.println("시도할 횟수는 몇 회인가요?");
+        System.out.println(Message.PROMPT_RACE_ROUNDS);
+    }
+
+    public static void printRacingStart() {
+        System.out.println(Message.RESULT_HEADER);
+    }
+
+    public static void printRacingStateByMove(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+        }
+        System.out.println("\n");
+    }
+
+    public static void printResult(List<Car> cars) {
+        List<String> carNames = cars.stream()
+                                .map(Car::getName)
+                                .toList();
+        System.out.println(Message.FINAL_WINNER_PREFIX + String.join(", ", carNames));
     }
 }
