@@ -14,8 +14,8 @@ class RacingTest extends NsTest {
         assertSimpleTest(() -> {
             Racing racing = new Racing(new String[]{"pobi","woni"}, 1);
             racing.start();
-            assertThat(output()).contains("pobi");
-            assertThat(output()).contains("woni");
+            assertThat(output()).contains("pobi :");
+            assertThat(output()).contains("woni :");
         });
     }
 
