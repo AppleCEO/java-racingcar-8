@@ -19,6 +19,7 @@ public class Racing {
     }
 
     public void start() {
+        ConsoleOutput.printRacingStart();
         IntStream.range(0, moveCount)
                 .forEach(i -> {
                     moveCars();
