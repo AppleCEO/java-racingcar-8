@@ -19,6 +19,22 @@ class RacingTest extends NsTest {
         });
     }
 
+    @Test
+    void 최종_우승자_테스트() {
+        assertSimpleTest(() -> {
+            Racing racing = new Racing(new String[]{"pobi","woni"}, 1);
+            racing.start();
+            String output = output();
+            String[] lines = output.split(System.lineSeparator());
+            String lastLine = lines[lines.length - 1];
+            assertThat(lastLine).satisfiesAnyOf(
+                    s -> assertThat(s).contains("최종 우승자 : pobi"),
+                    s -> assertThat(s).contains("최종 우승자 : pobi, woni"),
+                    s -> assertThat(s).contains("최종 우승자 : woni")
+            );
+        });
+    }
+
     @Override
     public void runMain() {
     }
