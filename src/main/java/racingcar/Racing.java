@@ -24,7 +24,7 @@ public class Racing {
             }
             ConsoleOutput.printRacingStateByMove(carNames, carPositions);
         }
-        ConsoleOutput.printResult(carNames);
+        ConsoleOutput.printResult(getWinners());
     }
 
     private void move(int carIndex) {
