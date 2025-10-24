@@ -25,7 +25,11 @@ public class ConsoleReader {
 
     private static void readMoveCount() {
         ConsoleOutput.printMoveCountInputGuide();
-        moveCount = Integer.parseInt(Console.readLine());
+        try {
+            moveCount = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.ERROR_INVALID_ROUND_NUMBER.get());
+        }
     }
 
     private static void validateCarNames(String[] inputNames) {
