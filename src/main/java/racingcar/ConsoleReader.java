@@ -8,6 +8,7 @@ public class ConsoleReader {
     public static String[] carNames;
     public static int moveCount;
     private static final int MAX_LENGTH = 5;
+    private static final String SPLIT_CHARACTOR = ",";
 
     public static void readInput() {
         readCarNames();
@@ -17,7 +18,7 @@ public class ConsoleReader {
     private static void readCarNames() {
         ConsoleOutput.printCarNamesInputGuide();
         String input = Console.readLine();
-        String[] inputNames = input.split(",");
+        String[] inputNames = input.split(SPLIT_CHARACTOR);
         validateCarNames(inputNames);
         carNames = inputNames;
     }
