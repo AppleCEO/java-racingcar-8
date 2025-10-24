@@ -19,7 +19,7 @@ public class ConsoleOutput {
         for (Car car : cars) {
             System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
-        System.out.println("\n");
+        System.out.println();
     }
 
     public static void printResult(List<Car> cars) {
