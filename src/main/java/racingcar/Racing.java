@@ -21,12 +21,16 @@ public class Racing {
     public void start() {
         IntStream.range(0, moveCount)
                 .forEach(i -> {
-                    for (Car car : cars) {
-                        car.move();
-                    }
-                    ConsoleOutput.printRacingStateByMove(cars);
+                    moveCars();
                 });
         ConsoleOutput.printResult(getWinners());
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            car.move();
+        }
+        ConsoleOutput.printRacingStateByMove(cars);
     }
 
     public List<Car> getWinners() {
