@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleReader {
     public static String[] carNames;
-    public static String moveCount;
+    public static int moveCount;
 
     public static void readInput() {
         readCarNames();
@@ -19,6 +19,6 @@ public class ConsoleReader {
 
     private static void readMoveCount() {
         ConsoleOutput.printMoveCountInputGuide();
-        moveCount = Console.readLine();
+        moveCount = Integer.parseInt(Console.readLine());
     }
 }
