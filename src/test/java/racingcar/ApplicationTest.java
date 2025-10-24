@@ -25,7 +25,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 자동차_이름에_공백이_있거나_5자_초과시_예외_테스트() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             runException("pobi,javaji", "1");
         });
@@ -33,7 +33,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 이동_횟수에_숫자_아닌_입력_예외_테스트() {
+    void 이동_횟수에_숫자_아닌_입력시_예외_테스트() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
             runException("pobi,java", "a");
         });
