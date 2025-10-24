@@ -26,10 +26,10 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 예외_테스트() {
-        assertSimpleTest(() ->
-            assertThatThrownBy(() -> runException("pobi,javaji", "1"))
-                .isInstanceOf(IllegalArgumentException.class)
-        );
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+            runException("pobi,javaji", "1");
+        });
+        assertThat(e.getMessage()).isEqualTo(Message.ERROR_INVALID_CAR_NAME.get());
     }
 
     @Test
