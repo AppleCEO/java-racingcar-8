@@ -19,4 +19,8 @@ public class ConsoleOutput {
         }
         System.out.println("\n");
     }
+
+    public static void printResult(String[] carNames) {
+        System.out.println(Message.FINAL_WINNER_PREFIX + String.join(", ", carNames));
+    }
 }

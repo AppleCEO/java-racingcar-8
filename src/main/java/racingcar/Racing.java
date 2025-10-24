@@ -1,5 +1,8 @@
 package racingcar;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Racing {
@@ -21,6 +24,7 @@ public class Racing {
             }
             ConsoleOutput.printRacingStateByMove(carNames, carPositions);
         }
+        ConsoleOutput.printResult(carNames);
     }
 
     private void move(int carIndex) {
@@ -28,5 +32,24 @@ public class Racing {
         if (randomNumber >= 4) {
             carPositions[carIndex] += 1;
         }
+    }
+
+    public String[] getWinners() {
+        int maxPosition = getMaxPosition();
+        List<String> winners = new ArrayList<>();
+        for (int i = 0; i < carPositions.length; i++) {
+            if (carPositions[i] == maxPosition) {
+                winners.add(carNames[i]);
+            }
+        }
+        return winners.toArray(new String[0]);
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (int position : carPositions) {
+            maxPosition = Math.max(position, maxPosition);
+        }
+        return maxPosition;
     }
 }
