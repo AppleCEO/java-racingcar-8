@@ -2,54 +2,49 @@ package racingcar;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Racing {
-    private String[] carNames;
+    private List<Car> cars;
     private int moveCount;
-    private int[] carPositions;
-    private Random random = new Random();
 
     public Racing(String[] carNames, int moveCount) {
-        this.carNames = carNames;
+        this.cars = Arrays.stream(carNames)
+                .map(name -> new Car(name))
+                .collect(Collectors.toList());
         this.moveCount = moveCount;
-        this.carPositions = new int[carNames.length];
     }
 
     public void start() {
-        for (int moveIndex = 0; moveIndex < moveCount; moveIndex++) {
-            for (int carIndex = 0; carIndex < this.carPositions.length; carIndex++) {
-                move(carIndex);
-            }
-            ConsoleOutput.printRacingStateByMove(carNames, carPositions);
-        }
+        IntStream.range(0, moveCount)
+                .forEach(i -> {
+                    for (Car car : cars) {
+                        car.move();
+                    }
+                    ConsoleOutput.printRacingStateByMove(cars);
+                });
         ConsoleOutput.printResult(getWinners());
     }
 
-    private void move(int carIndex) {
-        int randomNumber = random.nextInt(10);
-        if (randomNumber >= 4) {
-            carPositions[carIndex] += 1;
-        }
-    }
-
-    public String[] getWinners() {
+    public List<Car> getWinners() {
         int maxPosition = getMaxPosition();
-        List<String> winners = new ArrayList<>();
-        for (int i = 0; i < carPositions.length; i++) {
-            if (carPositions[i] == maxPosition) {
-                winners.add(carNames[i]);
-            }
-        }
-        return winners.toArray(new String[0]);
+        return getCarsAtMaxPosition(maxPosition);
     }
 
     private int getMaxPosition() {
-        int maxPosition = 0;
-        for (int position : carPositions) {
-            maxPosition = Math.max(position, maxPosition);
-        }
+        int maxPosition = cars.stream()
+                        .mapToInt(Car::getPosition)
+                        .max()
+                        .orElse(0);
         return maxPosition;
+    }
+
+    private List<Car> getCarsAtMaxPosition(int maxPosition) {
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .collect(Collectors.toList());
     }
 }

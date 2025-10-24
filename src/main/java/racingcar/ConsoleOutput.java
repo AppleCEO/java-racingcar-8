@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class ConsoleOutput {
     public static void printCarNamesInputGuide() {
         System.out.println(Message.PROMPT_CAR_NAMES);
@@ -13,14 +15,17 @@ public class ConsoleOutput {
         System.out.println(Message.RESULT_HEADER);
     }
 
-    public static void printRacingStateByMove(String[] carNames, int[] carPositions) {
-        for (int carIndex = 0; carIndex < carNames.length; carIndex++) {
-            System.out.println(carNames[carIndex] + " : " + "-".repeat(carPositions[carIndex]));
+    public static void printRacingStateByMove(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
         }
         System.out.println("\n");
     }
 
-    public static void printResult(String[] carNames) {
+    public static void printResult(List<Car> cars) {
+        List<String> carNames = cars.stream()
+                                .map(Car::getName)
+                                .toList();
         System.out.println(Message.FINAL_WINNER_PREFIX + String.join(", ", carNames));
     }
 }
