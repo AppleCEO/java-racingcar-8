@@ -17,7 +17,7 @@ class ConsoleReaderTest extends NsTest {
             run("pobi,wony,domi", "1");
             ConsoleReader.readInput();
             assertThat(ConsoleReader.carNames).isEqualTo(new String[]{"pobi","wony","domi"});
-            assertThat(ConsoleReader.moveCount).isEqualTo("1");
+            assertThat(ConsoleReader.moveCount).isEqualTo(1);
         });
     }
 
